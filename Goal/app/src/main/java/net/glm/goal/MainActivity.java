@@ -8,6 +8,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button btnMapActivity;
     Button btnLoginActivity;
+    Button btnStartUpActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
