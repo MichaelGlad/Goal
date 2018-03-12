@@ -3,4 +3,10 @@
     <string name="title_activity_maps">Map</string>
 
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCZUEJ6H90OZAXzPLDJVJKrD7Okph1I-ZE</string>
+    <string name="goal_logo">Goal Logo</string>
+    <string name="goals_title">Goals</string>
+    <string name="leaderboards_title">Leaderboards</string>
+    <string name="statistics_title">Statistics</string>
+    <string name="tryouts_title">Tryouts</string>
+    <string name="burned_calories_title">Burned calories</string>
 </resources>
