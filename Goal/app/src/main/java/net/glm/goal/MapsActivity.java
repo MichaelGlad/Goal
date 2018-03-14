@@ -115,7 +115,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onConnectionSuspended(int i) {
-        Log.d(LOG_TAG, " Connection Suspended ");
+        Log.d(LOG_TAG, " Connection Suspended - ");
 
     }
 
