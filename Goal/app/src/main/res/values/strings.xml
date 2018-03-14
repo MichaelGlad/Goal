@@ -9,4 +9,5 @@
     <string name="statistics_title">Statistics</string>
     <string name="tryouts_title">Tryouts</string>
     <string name="burned_calories_title">Burned calories</string>
+    <string name="background_photo">Background Photo</string>
 </resources>
