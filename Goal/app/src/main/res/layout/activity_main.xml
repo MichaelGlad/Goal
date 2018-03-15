@@ -4,10 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout_editor_absoluteY="81dp"
     android:background="@drawable/gradient_background"
-    tools:context="net.glm.goal.MainActivity">
+    tools:context="net.glm.goal.MainActivity"
+    tools:layout_editor_absoluteY="81dp">
 
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="320dp"
+        android:contentDescription="white background"
+        android:src="@android:color/white"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_map_activity"
@@ -54,6 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="22dp"
         android:layout_marginBottom="24dp"
+        android:fontFamily="@font/roboto_regular"
         android:text="@string/tryouts_title"
         android:textAppearance="@style/tryouts"
         app:layout_constraintBottom_toTopOf="@+id/textView"
@@ -118,33 +130,37 @@
         android:layout_height="17dp"
         android:layout_marginEnd="24dp"
         android:layout_marginStart="24dp"
-        tools:progress="50"
         app:layout_constraintBottom_toBottomOf="@+id/goals_tv"
         app:layout_constraintEnd_toStartOf="@+id/goals_tv"
         app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="@+id/goals_tv" />
+        app:layout_constraintTop_toTopOf="@+id/goals_tv"
+        tools:progress="50" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="24dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="33dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="56dp"
         android:contentDescription="@string/background_photo"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/manrunningphoto" />
+        app:srcCompat="@drawable/challenge5k" />
 
     <view
-        class="android.support.v7.widget.RecyclerView"
         android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="94dp"
+        class="android.support.v7.widget.RecyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="244dp"
+        android:padding="12dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -1,9 +1,12 @@
 package net.glm.goal;
 
 import android.content.Intent;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSnapHelper;
+import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
@@ -42,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(challengesAdapter);
 
+
+        LinearSnapHelper snapHelper = new LinearSnapHelper();
+        snapHelper.attachToRecyclerView(recyclerView);
+
         bindViewToMembers();
         setFakeData();
 
@@ -73,12 +80,5 @@ public class MainActivity extends AppCompatActivity {
         caloriesTV.setText("786 cal");
         progressBar.setProgress(50);
     }
-
-
-
-
-
-
-
 
 }

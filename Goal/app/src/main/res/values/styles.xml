@@ -15,12 +15,14 @@
     <!--Titles Style -->
     <style name="goals">
         <item name="android:textSize">25sp</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="android:textColor">#000000</item></style>
 
 
     <!--Text style-->
     <style name="tryouts">
         <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="android:textColor">#000000</item>
     </style>
 
