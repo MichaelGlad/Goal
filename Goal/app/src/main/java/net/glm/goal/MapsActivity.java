@@ -60,6 +60,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         iconForMarker = BitmapDescriptorFactory.fromBitmap(
                 getResizebleCircleBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.cat), (int) (30 * getResources().getDisplayMetrics().density)));
+        Log.d(LOG_TAG," Map Activity OnCreate");
     }
 
     @Override
@@ -67,6 +68,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onStart();
         initGoogleApiClient();
         googleApiClient.connect();
+        Log.d(LOG_TAG," Map Activity OnStart");
     }
 
     @Override

@@ -2,7 +2,7 @@
     <string name="app_name">Goal</string>
     <string name="title_activity_maps">Map</string>
 
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCZUEJ6H90OZAXzPLDJVJKrD7Okph1I-ZE</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDYsW4J4yCuDmkAqCBONWCoYyI98PeZq24</string>
     <string name="goal_logo">Goal Logo</string>
     <string name="goals_title">Goals</string>
     <string name="leaderboards_title">Leaderboards</string>
@@ -10,6 +10,5 @@
     <string name="tryouts_title">Tryouts</string>
     <string name="burned_calories_title">Burned calories</string>
     <string name="background_photo">Background Photo</string>
-    <string name="google_maps_key_alon" templateMergeStrategy="preserve" translatable="false">AIzaSyBXQxGStUoJ-jWxd5TTHJsZVCdxrWU06TU</string>
 
 </resources>
