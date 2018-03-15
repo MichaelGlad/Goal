@@ -10,4 +10,6 @@
     <string name="tryouts_title">Tryouts</string>
     <string name="burned_calories_title">Burned calories</string>
     <string name="background_photo">Background Photo</string>
+    <string name="google_maps_key_alon" templateMergeStrategy="preserve" translatable="false">AIzaSyBXQxGStUoJ-jWxd5TTHJsZVCdxrWU06TU</string>
+
 </resources>

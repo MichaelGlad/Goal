@@ -1,9 +1,11 @@
 package net.glm.goal;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tryoutsTV;
     TextView caloriesTV;
     ProgressBar progressBar;
+    Button btnMapActivity;
 
     private RecyclerView recyclerView;
     private ArrayList<Challenge> challenges;
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         bindViewToMembers();
         setFakeData();
+
     }
 
     private void bindViewToMembers(){
@@ -49,6 +53,16 @@ public class MainActivity extends AppCompatActivity {
         tryoutsTV= findViewById(R.id.tryouts_tv);
         caloriesTV= findViewById(R.id.calories_tv);
         progressBar = findViewById(R.id.progressBar2);
+        btnMapActivity = findViewById(R.id.btn_map_activity);
+        btnMapActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(v.getId() == R.id.btn_map_activity){
+                    Intent intent = new Intent(MainActivity.this,MapsActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     private void setFakeData(){
