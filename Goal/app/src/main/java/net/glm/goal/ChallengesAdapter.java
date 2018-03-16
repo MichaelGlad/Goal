@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,11 +49,12 @@ public static class MyViewHolder extends RecyclerView.ViewHolder{
         btnMapActivity = itemView.findViewById(R.id.challenge_view);
         mainView = itemView.findViewById(R.id.mainView);
 
+
     }
 }
 
-    public ChallengesAdapter(ArrayList<Challenge> challenges, changeBackground listener) {
-        this.listener=listener;
+    public ChallengesAdapter(ArrayList<Challenge> challenges) {
+
         this.challenges = challenges;
     }
 
@@ -65,16 +67,22 @@ public static class MyViewHolder extends RecyclerView.ViewHolder{
         return  myViewHolder;
     }
 
+
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        holder.goalsTV.setText("58%");
-        holder.leaderboardsTV.setText("39th");
-        holder.tryoutsTV.setText("5 times");
-        holder.caloriesTV.setText("786 cal");
-        holder.progressBar.setProgress(58);
-        if (position == 3) {
-            listener.changeBackground(position);
-        }
+//        holder.goalsTV.setText("58%");
+//        holder.leaderboardsTV.setText("39th");
+//        holder.tryoutsTV.setText("5 times");
+//        holder.caloriesTV.setText("786 cal");
+//        holder.progressBar.setProgress(58);
+        holder.goalsTV.setText(challenges.get(position).getGoals());
+        holder.leaderboardsTV.setText(challenges.get(position).getLeaderboards());
+        holder.tryoutsTV.setText(challenges.get(position).getTryouts());
+        holder.caloriesTV.setText(challenges.get(position).getCalories());
+        holder.progressBar.setProgress(Integer.valueOf(challenges.get(position).getGoals()));
+
+
+
 
         holder.btnMapActivity.setOnClickListener(new View.OnClickListener() {
             @Override

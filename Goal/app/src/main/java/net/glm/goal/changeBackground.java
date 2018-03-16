@@ -5,4 +5,5 @@ package net.glm.goal;
  */
 
 public interface changeBackground {
+    public void changeBackground(int backgroundNumber);
 }
