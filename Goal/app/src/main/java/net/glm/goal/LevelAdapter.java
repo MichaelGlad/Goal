@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -17,6 +18,8 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.LevelHolder>
 
     private ArrayList<Level> levels;
     Context context;
+
+
 
     public LevelAdapter(ArrayList<Level> levels, Context context) {
         this.levels = levels;
@@ -33,6 +36,7 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.LevelHolder>
 
     @Override
     public void onBindViewHolder(LevelHolder holder, int position) {
+        holder.name.setText(levels.get(position).getName());
     }
 
 
@@ -42,9 +46,12 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.LevelHolder>
     }
 
     class LevelHolder extends RecyclerView.ViewHolder {
-        public LevelHolder(View itemView) {
+        TextView name;
+        public LevelHolder(final View itemView) {
             super(itemView);
-            Toast.makeText(context.getApplicationContext(), "click" , Toast.LENGTH_SHORT).show();
+            name = itemView.findViewById(R.id.tvHardLEvel);
+
+
         }
     }
 }
