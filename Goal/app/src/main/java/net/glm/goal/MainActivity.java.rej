@@ -1,0 +1,9 @@
+diff a/Goal/app/src/main/java/net/glm/goal/MainActivity.java b/Goal/app/src/main/java/net/glm/goal/MainActivity.java	(rejected hunks)
+@@ -8,6 +8,7 @@
+ 
+     Button btnMapActivity;
+     Button btnLoginActivity;
++    Button btnStartUpActivity;
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
