@@ -12,6 +12,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -29,7 +30,24 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.maps.android.PolyUtil;
 
+
+import net.glm.goal.Interfaces.DirectionNetworkClient;
+import net.glm.goal.Pojo.DirectionAnswer;
+import net.glm.goal.Pojo.Polyline;
+import net.glm.goal.Pojo.Route;
+import net.glm.goal.Pojo.Step;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static net.glm.goal.Utility.BitmapUtility.*;
 
@@ -44,6 +62,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private GoogleMap mMap;
     private boolean permissionIsGranted;
     private Marker currentLocationMarker;
+    private Marker[] markersArray = new Marker [5];
     private GoogleApiClient googleApiClient;
     private LocationRequest locationRequest;
     private BitmapDescriptor iconForMarker;
@@ -59,7 +78,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapFragment.getMapAsync(this);
 
         iconForMarker = BitmapDescriptorFactory.fromBitmap(
-                getResizebleCircleBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.cat), (int) (30 * getResources().getDisplayMetrics().density)));
+                getResizebleCircleBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.cat),
+                        (int) (30 * getResources().getDisplayMetrics().density)));
         Log.d(LOG_TAG," Map Activity OnCreate");
     }
 
@@ -94,12 +114,22 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         // Add a marker in Google Campus TLV and move the camera
         LatLng googleCampusTLV = new LatLng(32.0700804, 34.7941446);
-        mMap.addMarker(new MarkerOptions().position(googleCampusTLV).title("Google Campus TLV"));
-        currentLocationMarker = mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(googleCampusTLV.latitude + 0.005,googleCampusTLV.longitude + 0.005))
-                .icon(iconForMarker)
-                .title("Cat")
-        );
+        markersArray[0]=mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(googleCampusTLV.latitude,googleCampusTLV.longitude))
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+                .title("Start"));
+        markersArray[0].setTag((Integer) 0);
+
+        for (int i = 1; i < markersArray.length; i++) {
+            markersArray[i] = mMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(googleCampusTLV.latitude+i*0.0003,googleCampusTLV.longitude+i*0.0003))
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+                    .draggable(true)
+                    .title("Station " + i)
+            );
+            markersArray[i].setTag((Integer) i);
+
+        }
 
         try {
             // Customise the styling of the base map using a JSON object defined
@@ -114,7 +144,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         } catch (Resources.NotFoundException e) {
             Log.e(LOG_TAG, "Can't find style. Error: ", e);
         }
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(googleCampusTLV,15));
+        mMap.setOnMarkerClickListener(new MyMarkerClickListener());
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(googleCampusTLV,16));
     }
 
     private void requestLocationUpdate() {
@@ -147,7 +178,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onLocationChanged(Location location) {
 
-        currentLocationMarker.setPosition(new LatLng(location.getLatitude(),location.getLongitude()));
+//        currentLocationMarker.setPosition(new LatLng(location.getLatitude(),location.getLongitude()));
 
     }
 
@@ -173,6 +204,72 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 permissionIsGranted = false;
                 Toast.makeText(this, " This App request location Permission to be granted ", Toast.LENGTH_SHORT).show();
             }
+        }
+    }
+
+
+    public void runNetworkRequest(){
+        Retrofit.Builder rBuilder = new Retrofit.Builder()
+                .baseUrl("https://maps.googleapis.com/maps/api/directions/")
+                .addConverterFactory(GsonConverterFactory.create());
+
+        Retrofit retrofit = rBuilder.build();
+        DirectionNetworkClient directionClient = retrofit.create(DirectionNetworkClient.class);
+        Call<DirectionAnswer> call = directionClient.getDirectionOnPath();
+
+        call.enqueue(new Callback<DirectionAnswer>() {
+            @Override
+            public void onResponse(Call<DirectionAnswer> call, Response<DirectionAnswer> response) {
+              DirectionAnswer directionAnswer = response.body();
+
+                if(directionAnswer.routes.get(0).legs.get(0).steps != null){
+                    List<Step> pathSteps = directionAnswer.routes.get(0).legs.get(0).steps;
+                    List<String> polylineList = new ArrayList<>();
+                    Log.d(LOG_TAG,"Number of Legs  - " + directionAnswer.routes.get(0).legs.size());
+                    for (int i =0; i < pathSteps.size();i++){
+                        polylineList.add(pathSteps.get(i).polyline.points);
+                    }
+                    drawDirectioOnMap(polylineList);
+                }
+                Toast.makeText(MapsActivity.this,"The Length of Path -" +
+                                directionAnswer.routes.get(0).legs.get(0).distance.stringDistance,
+                        Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onFailure(Call<DirectionAnswer> call, Throwable t) {
+
+                Toast.makeText(MapsActivity.this," Network access faild",Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+
+
+    }
+
+    public void drawDirectioOnMap (List<String> polylineList){
+
+        for (int i = 0; i < polylineList.size() ; i++) {
+            PolylineOptions polylineOptions = new PolylineOptions();
+            polylineOptions.color(getResources().getColor(R.color.colorGreenMain));
+            polylineOptions.width(10);
+            polylineOptions.addAll(PolyUtil.decode(polylineList.get(i)));
+            mMap.addPolyline(polylineOptions);
+        }
+    }
+
+    public class MyMarkerClickListener implements GoogleMap.OnMarkerClickListener{
+
+        @Override
+        public boolean onMarkerClick(Marker marker) {
+
+            Log.d(LOG_TAG," The Marker is - " + marker.getTag().toString());
+            if(marker.getTag() != null) {
+                if(((Integer) marker.getTag()) == 1){
+                    runNetworkRequest();
+                }
+            }
+            return false;
         }
     }
 
