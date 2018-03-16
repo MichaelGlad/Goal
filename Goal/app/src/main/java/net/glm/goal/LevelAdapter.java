@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +38,24 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.LevelHolder>
     @Override
     public void onBindViewHolder(LevelHolder holder, int position) {
         holder.name.setText(levels.get(position).getName());
+        switch (position){
+            case 0:
+                holder.cardLevel.setBackgroundResource(R.drawable.orange_gradient);
+                break;
+            case 1:
+                holder.cardLevel.setBackgroundResource(R.drawable.gradient_3k);
+                break;
+            case 2:
+                holder.cardLevel.setBackgroundResource(R.drawable.gradient_background);
+                break;
+            case 3:
+                holder.cardLevel.setBackgroundResource(R.drawable.gradient_10k);
+                break;
+            default:
+                holder.cardLevel.setBackgroundResource(R.drawable.gradient_10k);
+
+        }
+
     }
 
 
@@ -47,9 +66,11 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.LevelHolder>
 
     class LevelHolder extends RecyclerView.ViewHolder {
         TextView name;
+        ImageView cardLevel;
         public LevelHolder(final View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.tvHardLEvel);
+            cardLevel = itemView.findViewById(R.id.imageView4);
 
 
         }
