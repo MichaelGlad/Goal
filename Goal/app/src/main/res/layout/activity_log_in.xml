@@ -14,11 +14,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher_round" />
+        app:srcCompat="@drawable/avatar_astronaut" />
 
     <TextView
         android:id="@+id/tvName"
@@ -26,8 +26,10 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Name"
+        android:layout_marginTop="14dp"
+        android:text="Eithan Jackson"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/ivpic"
         app:layout_constraintStart_toStartOf="@+id/ivpic"
         app:layout_constraintTop_toBottomOf="@+id/ivpic" />
@@ -37,8 +39,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="110dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginStart="13dp"
         android:background="@drawable/button_corner_login_screen"
         android:padding="20dp"
         android:text="KEEP GOING"
@@ -55,7 +57,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="Roboto"
+        android:fontFamily="@font/roboto_regular"
         android:text="START BEGINNERS WORKOUT"
         android:textColor="#0AEB8B"
         app:layout_constraintEnd_toEndOf="@+id/btnSignIn"
@@ -63,17 +65,18 @@
         app:layout_constraintTop_toBottomOf="@+id/btnSignIn" />
 
 
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:fontFamily="Roboto"
-            android:text="LET IT ALL"
-            android:textColor="#0AEB8B"
-            app:layout_constraintEnd_toEndOf="@+id/tvName"
-            app:layout_constraintStart_toStartOf="@+id/tvName"
-            app:layout_constraintTop_toBottomOf="@+id/tvName" />
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="LET IT ALL"
+        android:textColor="#0AEB8B"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvName"
+        app:layout_constraintStart_toStartOf="@+id/tvName"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
     <TextView
         android:id="@+id/textView18"
@@ -90,15 +93,18 @@
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
 
-
     <EditText
         android:id="@+id/age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:ems="3"
-        android:hint="26"
+        android:fontFamily="@font/roboto_bold"
+        android:hint="--"
         android:inputType="number"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/height"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/height"
@@ -112,8 +118,12 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:ems="3"
-        android:hint="1.75"
+        android:fontFamily="@font/roboto_bold"
+        android:hint="---"
         android:inputType="numberDecimal"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/btnSignIn"
         app:layout_constraintEnd_toStartOf="@+id/age"
         app:layout_constraintHorizontal_bias="0.462"
@@ -124,10 +134,14 @@
         android:id="@+id/weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:ems="3"
-        android:hint="79"
+        android:fontFamily="@font/roboto_bold"
+        android:hint="--"
         android:inputType="numberDecimal"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/height"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/height"
@@ -157,8 +171,8 @@
 
     <TextView
         android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="25dp"
+        android:layout_height="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -166,5 +180,16 @@
         app:layout_constraintEnd_toEndOf="@+id/age"
         app:layout_constraintStart_toStartOf="@+id/age"
         app:layout_constraintTop_toBottomOf="@+id/age" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_light"
+        android:text="New York, USA"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
 </android.support.constraint.ConstraintLayout>

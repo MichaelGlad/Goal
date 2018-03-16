@@ -1,6 +1,8 @@
 package net.glm.goal;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.DrawableRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,11 +47,14 @@ public class LogInScreen extends AppCompatActivity {
         //height.setText(height1);
         //age.setText(age1);
 
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        String weight = sharedPref.getString("weight",null);
+        String height = sharedPref.getString("height",null);
 
-        levels.add(new Level("ok"));
-        levels.add(new Level("ok1"));
-        levels.add(new Level("ok2"));
-        levels.add(new Level("ok3"));
+        levels.add(new Level("1Km"));
+        levels.add(new Level("3Km"));
+        levels.add(new Level("5Km"));
+        levels.add(new Level("10Km"));
 
         LevelAdapter adapter = new LevelAdapter(levels , this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
