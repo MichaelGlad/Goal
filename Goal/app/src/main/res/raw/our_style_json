@@ -33,6 +33,15 @@
   },
   {
     "featureType": "administrative.land_parcel",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
     "elementType": "labels.text.fill",
     "stylers": [
       {
@@ -46,6 +55,15 @@
     "stylers": [
       {
         "color": "#eeeeee"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text",
+    "stylers": [
+      {
+        "visibility": "off"
       }
     ]
   },
@@ -87,13 +105,10 @@
   },
   {
     "featureType": "road.arterial",
-    "elementType": "geometry.fill",
+    "elementType": "labels",
     "stylers": [
       {
-        "color": "#ffff00"
-      },
-      {
-        "weight": 1
+        "visibility": "off"
       }
     ]
   },
@@ -117,13 +132,10 @@
   },
   {
     "featureType": "road.highway",
-    "elementType": "geometry.fill",
+    "elementType": "labels",
     "stylers": [
       {
-        "color": "#00ff00"
-      },
-      {
-        "weight": 1
+        "visibility": "off"
       }
     ]
   },
@@ -133,6 +145,23 @@
     "stylers": [
       {
         "color": "#616161"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
       }
     ]
   },
