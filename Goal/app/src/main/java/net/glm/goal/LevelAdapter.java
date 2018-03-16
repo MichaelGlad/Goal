@@ -44,6 +44,7 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.LevelHolder>
     class LevelHolder extends RecyclerView.ViewHolder {
         public LevelHolder(View itemView) {
             super(itemView);
+            Toast.makeText(context.getApplicationContext(), "click" , Toast.LENGTH_SHORT).show();
         }
     }
 }
