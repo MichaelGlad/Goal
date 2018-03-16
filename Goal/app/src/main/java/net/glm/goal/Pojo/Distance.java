@@ -10,5 +10,9 @@ public class Distance {
     @Expose
     public String stringDistance;
 
+    @SerializedName("value")
+    @Expose
+    public Long distance;
+
 
 }
