@@ -79,7 +79,7 @@
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="Roboto"
+        android:fontFamily="@font/roboto_bold"
         android:text="START HERE"
         android:textColor="#0AEB8B"
         android:textSize="30dp"
